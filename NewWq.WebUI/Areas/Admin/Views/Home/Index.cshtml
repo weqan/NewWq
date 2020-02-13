@@ -1,0 +1,89 @@
+﻿@model NewWq.Dto.UserInformationDto
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="~/Content/img/logo.ico">
+
+    <title>后台主页</title>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    <link rel="stylesheet" href="~/Areas/Admin/css/admin.css">
+
+
+</head>
+
+<body style="overflow: hidden;">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">汉堡菜单</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">维千网后台管理主页</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">@Model.Email</a></li>
+                    <li><a href="/Admin/Home/Quit">退出</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="搜索...">
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="javascript:void(0);" onclick="getMenu('/Admin/Commodity/CategoryList')">分类标签管理</a></li>
+                    <li><a href="javascript:void(0);" onclick="getMenu('/Admin/Commodity/CommodityList')">商品管理</a></li>
+                    @{
+                        if (Model.Type == 2)
+                        {
+                            <li><a href="javascript:void(0);" onclick="getMenu('/Admin/Home/AdminList')">用户管理</a></li>
+                        }
+                    }
+
+                    <li><a href="#">Export</a></li>
+                    <li><a href="#">Export</a></li>
+                    <li><a href="#">Export</a></li>
+                    <li><a href="#">Export</a></li>
+                    <li><a href="#">Export</a></li>
+                    <li><a href="#">Export</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="padding:0;">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="myMenu" class="embed-responsive-item" scrolling="auto" src=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    @*<script src="./js/holder.js"></script>*@
+    <script>
+        function getMenu(menuUrl) {
+            $("#myMenu").attr("src", menuUrl);
+        }
+    </script>
+</body>
+</html>

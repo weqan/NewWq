@@ -1,0 +1,142 @@
+/*------------------通用样式---------------------*/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+}
+
+@font-face {
+    font-family: glyphicons-halflings-regular;
+    src: url('./fonts/icomoon.eot') format('embedded-opentype'), url('./fonts/icomoon.svg') format('svg'), url('./fonts/icomoon.ttf') format('truetype'), url('./fonts/icomoon.woff') format('woff');
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: glyphicons-halflings-regular;
+    font-style: normal;
+}
+
+/*------------------/通用样式---------------------*/
+
+/*------------------头部样式---------------------*/
+
+#wq_header .top-bar {
+    height: 40px;
+    line-height: 39px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#wq_header .top-bar .container .row>div+div {
+    border-left: 1px solid #e0e0e0;
+}
+
+#wq_header .top-bar .container .row .top-bar-1 a {
+    position: relative;
+}
+
+#wq_header .top-bar .container .row .top-bar-1 a img {
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin-left: -60px;
+    margin-top: -10px;
+    z-index: 1001;
+    border: 1px solid #e0e0e0;
+}
+
+#wq_header .top-bar .container .row .top-bar-1 a:hover img {
+    display: block;
+}
+
+.icon-phone::before {
+    content: '\e958';
+    font-size: 13px;
+}
+
+.icon-tel::before {
+    content: '\e942';
+    font-size: 13px;
+}
+
+/*------------------navbar---------------------*/
+
+#wq_header .navbar-wq {
+    background-color: #fff;
+    margin-bottom: 0;
+    width: 100%;
+    top: 0;
+}
+
+#wq_header .navbar-wq .navbar-brand {
+    height: 70px;
+    padding: 16px 15px;
+}
+
+#wq_header .navbar-wq .navbar-nav a {
+    height: 70px;
+    line-height: 40px;
+}
+
+#wq_header .navbar-wq .navbar-nav .dropdown-menu a {
+    height: 40px;
+}
+
+#wq_header .navbar-wq .navbar-nav li.active a, #wq_header .navbar-wq .navbar-nav li a:hover {
+    background-color: transparent;
+    border-bottom: 2px solid #0ab4f7;
+}
+
+#wq_header .navbar-wq .navbar-toggle {
+    margin-top: 18px;
+}
+
+/*------------------/头部样式---------------------*/
+
+/*------------------footer---------------------*/
+
+#wq_footer {
+    width: 100%;
+    height: 200px;
+    background: url("./img/bg.jpg") no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    font-size: 16px;
+    clear: both;
+}
+
+#wq_footer ul {
+    list-style: none;
+}
+
+#wq_footer .one, #wq_footer .two {
+    padding: 10px;
+    border-right: 1px solid #666;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#wq_footer .one li {
+    line-height: 40px;
+}
+
+#wq_footer .one li a {
+    color: #fff;
+}
+
+#wq_footer .three {
+    padding: 10px 50px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#wq_footer .three a {
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+/*------------------/footer---------------------*/

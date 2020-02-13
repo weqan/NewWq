@@ -1,0 +1,182 @@
+﻿@{
+    var loginName = "";
+    if (Session["loginName"] == null || Session["loginName"].ToString() == "")
+    {
+        if (Request.Cookies["loginName"] == null)
+        {
+            loginName = "";
+        }
+        else
+        {
+            loginName = Session["loginName"] == null ? Request.Cookies["loginName"].Value : Session["loginName"].ToString();
+        }
+
+    }
+    else
+    {
+        loginName = Session["loginName"] == null ? Request.Cookies["loginName"].Value : Session["loginName"].ToString();
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 维千学院</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("header", required: false)
+</head>
+<body>
+    <!-- 头部 -->
+    <header id="wq_header">
+        <!--上部分-->
+        <div class="top-bar hidden-sm hidden-xs  text-center text-muted">
+            <div class="container">
+                <div class="row">
+                    <div class="top-bar-1 col-md-2">
+                        <a href="#">
+                            <i class="icon-phone"></i>
+                            <span>关注微信号</span>
+                            <span class="caret"></span>
+                            <img src="~/Content/img/ewm.png" alt="维千工作室" style="width: 130px;">
+                        </a>
+                    </div>
+                    <div class="top-bar-2 col-md-5">
+                        <i class="icon-tel"></i>
+                        <span>888-555-6666（服务时间：9:00-21:00）</span>
+                    </div>
+                    <div class="top-bar-3 col-md-2">
+                        <a href="#">校企合作</a>
+                        <a href="/Admin/Home/Login">后台登录</a>
+                    </div>
+                    <div class="top-bar-4 col-md-3">
+                        @if (loginName == "")
+                        {
+                            <a class="btn btn-primary" href="/User/Register" role="button">免费注册</a>
+                            <a class="btn btn-default" href="/User/Login" role="button">立即登录</a>
+                        }
+                        else
+                        {
+                            <span>@loginName</span>
+                        }
+
+                    </div>
+                    <div class="top-bar-5"></div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-default navbar-static-top navbar-wq" data-offset-top="40" data-spy="affix">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#wq-target" aria-expanded="false">
+                        <span class="sr-only">汉堡菜单</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="~/Content/img/logo.png" alt="weqan" style="width: 80px;">
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="wq-target">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">关于我们 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">热门课程</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                               role="button" aria-haspopup="true" aria-expanded="false">
+                                课程介绍 <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">.NET系列</a></li>
+                                <li><a href="#">Java系列</a></li>
+                                <li><a href="#">前端系列</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">运行维护</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">数据库</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">名师授课</a></li>
+                        <li><a href="#">课堂互动</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+
+                    @if (loginName != "")
+                    {
+                        <ul class="nav navbar-nav navbar-right hidden-sm hidden-xs">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                                   role="button" aria-haspopup="true" aria-expanded="false">
+                                    个人中心 <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">我的课程</a></li>
+                                    <li><a href="#">我发布的</a></li>
+                                    <li><a href="#">帮助中心</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="/User/Quit">退出登录</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- /头部 -->
+
+    @RenderBody()
+
+
+    <!-- 尾部 -->
+    <footer id="wq_footer" class=" hidden-sm hidden-xs">
+        <div class="container">
+            <div class="row" style="padding-top: 20px;">
+                <div class="col-md-3 col-md-offset-2 one">
+                    <div class="row">
+                        <ul class="col-md-6">
+                            <li><a href="#">官网公告</a></li>
+                            <li><a href="#">网站公告</a></li>
+                            <li><a href="#">版权说明</a></li>
+                        </ul>
+                        <ul class="col-md-6">
+                            <li><a href="#">关于我们</a></li>
+                            <li><a href="/Admin/Home/Login">后台登录</a></li>
+                            <li><a href="#">标签调用</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 two">
+                    <h5>公司电话:188888888</h5>
+                    <h5>公司电话:188888888</h5>
+                    <h5>公司电话:188888888</h5>
+                </div>
+                <div class="col-md-3 three">
+                    <h5>联系我们</h5>
+                    <a href="#">
+                        <img src="~/Content/img/wblogo.jpg" width="50" alt="" data-toggle="tooltip" data-placement="bottom"
+                             title="关注微博">
+                        <img src="~/Content/img/wxlogo.jpg" width="50" alt="" data-toggle="tooltip" data-placement="bottom"
+                             title="关注微信">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /尾部 -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/index")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,100 @@
+﻿/*------------------列表头---------------------*/
+
+.list-head {
+    background: url(../img/list-bg.jpg) center center no-repeat;
+    background-attachment: fixed;
+}
+
+    .list-head h2 {
+        text-align: center;
+        margin: 0 auto 5px;
+        padding-top: 110px;
+        font-size: 50px;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .list-head p {
+        font-size: 15px;
+        text-align: center;
+        color: #fff;
+        padding-bottom: 120px;
+    }
+
+.list_menu {
+    text-align: center;
+    height: 113px;
+    line-height: 113px;
+    color: #fff;
+    margin-top: 5px;
+    transition: width 0.5s,transform 0.5s;
+}
+
+    .list_menu a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .list_menu:hover {
+        transform: rotate(360deg);
+        width: 180px;
+    }
+
+/*------------------/列表头---------------------*/
+
+/*------------------热门商品---------------------*/
+
+#wq_hot {
+    padding: 20px 0;
+}
+
+    #wq_hot .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 15px;
+    }
+
+        #wq_hot .title .stars {
+            width: 100px;
+        }
+
+    #wq_hot .container .row a {
+        text-decoration: none
+    }
+
+        #wq_hot .container .row a:hover {
+            text-decoration: none;
+            box-shadow: 0 0 5px 5px #e0e0e0;
+        }
+
+        #wq_hot .container .row a h4 {
+            color: #666;
+        }
+
+        #wq_hot .container .row a:hover h4 {
+            color: #000;
+        }
+
+        #wq_hot .container .row a p {
+            color: #999;
+        }
+
+        #wq_hot .container .row a:hover p {
+            color: #666;
+        }
+
+/*------------------/热门商品---------------------*/
+
+/*------------------我们的客户---------------------*/
+
+#wq_link .title .stars {
+    width: 100px;
+}
+
+#wq_link .logos {
+    margin: 29px auto;
+}
+
+/*------------------/我们的客户---------------------*/

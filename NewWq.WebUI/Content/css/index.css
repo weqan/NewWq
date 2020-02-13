@@ -1,0 +1,144 @@
+﻿/*------------------轮播图样式---------------------*/
+
+#carousel-wq .item {
+    background: no-repeat center center;
+    background-size: cover;
+}
+
+@media screen and (min-width:800px) {
+    #carousel-wq .item {
+        height: 570px;
+    }
+}
+
+/*------------------/轮播图样式---------------------*/
+
+/*------------------关于我们样式---------------------*/
+
+#wq_about {
+    padding: 20px 0;
+}
+
+    #wq_about .title .stars {
+        width: 100px;
+    }
+
+    #wq_about .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 15px;
+    }
+
+    #wq_about img {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    #wq_about .row p {
+        line-height: 30px;
+        font-size: 15px;
+        text-indent: 2em;
+    }
+
+/*------------------/关于我们样式---------------------*/
+
+/*------------------产品特色---------------------*/
+
+#wq_product {
+    background-color: #f0f0f0;
+    padding: 30px 0;
+}
+
+    #wq_product .nav {
+        font-size: 15px;
+    }
+
+        #wq_product .nav a {
+            color: #999;
+        }
+
+        #wq_product .nav li.active a {
+            border: none;
+            background-color: transparent;
+            border-bottom: 2px solid #0ab4f7;
+            color: #000;
+        }
+
+    #wq_product .tab-content {
+        padding-top: 20px;
+    }
+
+    #wq_product .pd-left {
+        padding: 40px 0;
+    }
+
+#pd_one_1 {
+    margin: 15px 0;
+}
+
+#pd_one_2 {
+    background-color: transparent;
+}
+
+#pd_one_4 {
+    margin: 10px 0;
+}
+
+/*------------------/产品特色---------------------*/
+
+/*------------------热门商品---------------------*/
+
+#wq_hot {
+    padding: 20px 0;
+}
+
+    #wq_hot .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 15px;
+    }
+
+        #wq_hot .title .stars {
+            width: 100px;
+        }
+
+    #wq_hot .container .row a {
+        text-decoration: none
+    }
+
+        #wq_hot .container .row a:hover {
+            text-decoration: none;
+            box-shadow: 0 0 5px 5px #e0e0e0;
+        }
+
+        #wq_hot .container .row a h4 {
+            color: #666;
+        }
+
+        #wq_hot .container .row a:hover h4 {
+            color: #000;
+        }
+
+        #wq_hot .container .row a p {
+            color: #999;
+        }
+
+        #wq_hot .container .row a:hover p {
+            color: #666;
+        }
+/*------------------/热门商品---------------------*/
+
+/*------------------我们的客户---------------------*/
+#wq_link .title .stars {
+    width: 100px;
+}
+
+#wq_link .logos {
+    margin: 29px auto;
+}
+
+/*------------------/我们的客户---------------------*/
