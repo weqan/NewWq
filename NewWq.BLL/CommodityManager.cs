@@ -56,6 +56,30 @@ namespace NewWq.BLL
                 }).ToListAsync();
             }
         }
+        public async Task<List<CategoryDto>> GetAllCategories()
+        {
+            using (IDAL.ICategoryService categorySvc = new DAL.CategoryService())
+            {
+                return await categorySvc.GetAll(m => true).Select(m => new CategoryDto()
+                {
+                    UserId = m.UserId,
+                    CategoryName = m.CategoryName,
+                    CategoryId = m.Id
+                }).ToListAsync();
+            }
+        }
+        public List<CategoryDto> GetAllCategoriesSync()
+        {
+            using (IDAL.ICategoryService categorySvc = new DAL.CategoryService())
+            {
+                return categorySvc.GetAll(m => true).Select(m => new CategoryDto()
+                {
+                    UserId = m.UserId,
+                    CategoryName = m.CategoryName,
+                    CategoryId = m.Id
+                }).ToList();
+            }
+        }
         public async Task<List<CategoryDto>> GetAllCategories(int top)
         {
             using (IDAL.ICategoryService categorySvc = new DAL.CategoryService())
@@ -219,6 +243,65 @@ namespace NewWq.BLL
                 }
 
                 return list;
+            }
+        }
+        public async Task<List<CommodityDto>> GetAllCommoditiesByCateId(string categoryId)
+        {
+            List<CommodityDto> list = new List<CommodityDto>();
+            using (IDAL.ICommodityService commodityService = new DAL.CommodityService())
+            {
+                using (IDAL.IComtoCategoryService comtoCategoryService = new DAL.ComtoCategoryService())
+                {
+                    if (!string.IsNullOrWhiteSpace(categoryId))
+                    {
+                        Guid catId = Guid.Parse(categoryId);
+                        List<Guid> comtocateList = await comtoCategoryService.GetAll(m => m.CategoryId == catId).Select(m => m.CommodityId).ToListAsync();
+
+
+                        list = await commodityService.GetAll(m => comtocateList.Contains(m.Id)).Include(m => m.User).Select(m => new Dto.CommodityDto()
+                        {
+                            Title = m.Title,
+                            Content = m.Content,
+                            GoodCount = m.GoodCount,
+                            BadCount = m.BadCount,
+                            CreateTime = m.CreateTime,
+                            Id = m.Id,
+                            MainImage = m.MainImage,
+                            TaobaoUrl = m.TaobaoUrl,
+                            Email = m.User.Email,
+                            ImagePath = m.User.ImagePath
+                        }).ToListAsync();
+                    }
+                    else
+                    {
+                        list = await commodityService.GetAll(m => true).Include(m => m.User).Select(m => new Dto.CommodityDto()
+                        {
+                            Title = m.Title,
+                            Content = m.Content,
+                            GoodCount = m.GoodCount,
+                            BadCount = m.BadCount,
+                            CreateTime = m.CreateTime,
+                            Id = m.Id,
+                            MainImage = m.MainImage,
+                            TaobaoUrl = m.TaobaoUrl,
+                            Email = m.User.Email,
+                            ImagePath = m.User.ImagePath
+                        }).ToListAsync();
+
+                    }
+
+                    foreach (var item in list)
+                    {
+                        var cates = await comtoCategoryService.GetAll(m => m.CommodityId == item.Id).Include(m => m.Category).ToListAsync();
+                        item.CategoryIds = cates.Select(m => m.CategoryId).ToArray();
+                        item.CategoryNames = cates.Select(m => m.Category.CategoryName).ToArray();
+                    }
+
+                }
+
+                return list;
+
+
             }
         }
 

@@ -11,6 +11,12 @@ namespace NewWq.WebUI.Controllers
 
     public class HomeController : Controller
     {
+        public ActionResult PartialViewCate()
+        {
+            IBLL.ICommodityManager commodityManager = new BLL.CommodityManager();
+            var catelist = commodityManager.GetAllCategoriesSync();
+            return PartialView(catelist);
+        }
 
         public async Task<ActionResult> Index()
         {

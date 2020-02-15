@@ -171,7 +171,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Api\ApplicationUser.cs" />
+    <Compile Include="Models\Api\BannerViewModel.cs" />
+    <Compile Include="Models\Api\CategoryViewModel.cs" />
+    <Compile Include="Models\Api\CommodityViewModel.cs" />
     <Compile Include="Models\Api\ResponseData.cs" />
+    <Compile Include="Models\Api\RollingListViewModel.cs" />
     <Compile Include="Models\UserViewModel\LoginViewModel.cs" />
     <Compile Include="Models\UserViewModel\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -302,6 +306,9 @@
     <Content Include="Areas\Admin\umeditor\zh-cn\images\music.png" />
     <Content Include="Areas\Admin\umeditor\zh-cn\images\upload.png" />
     <Content Include="Areas\Admin\umeditor\zh-cn\zh-cn.js" />
+    <Content Include="CateImg\about_h5.png" />
+    <Content Include="CateImg\about_java.png" />
+    <Content Include="CateImg\about_python.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -370,6 +377,50 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="upload\2020-02-11\063763ba-d521-40f0-bc18-55519ca08167.jpg" />
+    <Content Include="upload\2020-02-11\1045f40d-d286-48ca-af08-3f8b2ead97bd.jpg" />
+    <Content Include="upload\2020-02-11\29fc3dd1-1100-4390-ba7c-dd03ad850f01.jpg" />
+    <Content Include="upload\2020-02-11\35faa754-7533-404f-9046-5de800e385d8.jpg" />
+    <Content Include="upload\2020-02-11\46a9328b-0f8c-41d2-b7c8-38873b1adc2f.jpg" />
+    <Content Include="upload\2020-02-11\484adb2a-bff3-4c89-8d83-15c59a3dfe56.jpg" />
+    <Content Include="upload\2020-02-11\51af1de0-815d-4cde-b17e-ae43ed3da501.jpg" />
+    <Content Include="upload\2020-02-11\57f0b4b2-775d-48ec-b93d-ba5e2eb22837.jpg" />
+    <Content Include="upload\2020-02-11\61ab8fbf-96df-4631-8bce-cfd5a608b1d0.jpg" />
+    <Content Include="upload\2020-02-11\6dd86d61-c710-49d7-a1fb-15e0fe1b7f77.jpg" />
+    <Content Include="upload\2020-02-11\79296e26-1808-4494-921d-a5cd222964e9.jpg" />
+    <Content Include="upload\2020-02-11\8531fbb4-e9f0-4fc6-865f-fd8aa9738d80.jpg" />
+    <Content Include="upload\2020-02-11\8fecf171-c285-4cd8-ae86-b8700e6730cb.jpg" />
+    <Content Include="upload\2020-02-11\9ec1f189-f95d-403f-adbe-0ff136fbd096.jpg" />
+    <Content Include="upload\2020-02-11\a23c6bfe-99ac-4660-a79a-5579a7dd5135.jpg" />
+    <Content Include="upload\2020-02-11\b4c763a1-8674-4757-a722-bd4942176f30.jpg" />
+    <Content Include="upload\2020-02-11\b674c60d-3623-4656-9628-6c7d5662e140.jpg" />
+    <Content Include="upload\2020-02-11\c79fb946-f29f-4c60-a42a-76492e4b3bc9.jpg" />
+    <Content Include="upload\2020-02-11\cd1efb19-b4e0-40c1-a362-2668df190e64.jpg" />
+    <Content Include="upload\2020-02-11\d6ac7103-9285-4488-b862-b444c75b22d4.jpg" />
+    <Content Include="upload\2020-02-11\ed00a20f-887a-4e6f-80da-22df68d6e4cb.jpg" />
+    <Content Include="upload\2020-02-11\fa5d5742-383a-4a3c-86bc-e28bcae8108b.jpg" />
+    <Content Include="upload\2020-02-11\fb34fe42-0513-41b5-923a-93dddbb04168.jpg" />
+    <Content Include="upload\63717037030929.jpg" />
+    <Content Include="upload\63717037154945.jpg" />
+    <Content Include="upload\63717037348207.jpg" />
+    <Content Include="upload\63717037425037.jpg" />
+    <Content Include="upload\63717037517642.jpg" />
+    <Content Include="upload\63717037760098.jpg" />
+    <Content Include="upload\63717037973150.jpg" />
+    <Content Include="upload\63717038055437.jpg" />
+    <Content Include="upload\63717038076756.jpg" />
+    <Content Include="upload\63717038186201.jpg" />
+    <Content Include="upload\63717038258682.jpg" />
+    <Content Include="upload\63717038422067.jpg" />
+    <Content Include="upload\63717038576170.jpg" />
+    <Content Include="upload\63717038658534.jpg" />
+    <Content Include="upload\63717038743645.jpg" />
+    <Content Include="upload\63717038822558.jpg" />
+    <Content Include="upload\63717038936097.jpg" />
+    <Content Include="upload\63717039011311.jpg" />
+    <Content Include="upload\63717039098367.jpg" />
+    <Content Include="upload\63717039218318.jpg" />
+    <Content Include="upload\63717039363486.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -386,11 +437,11 @@
     <Content Include="Views\Home\List.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Home\PartialViewCate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

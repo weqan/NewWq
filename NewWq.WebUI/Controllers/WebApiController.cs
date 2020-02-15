@@ -1,5 +1,8 @@
-﻿using NewWq.BLL;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using NewWq.BLL;
 using NewWq.WebUI.Filters;
+using NewWq.WebUI.Models.Api;
 using NewWq.WebUI.Models.UserViewModel;
 using System;
 using System.Collections.Generic;
@@ -52,6 +55,129 @@ namespace NewWq.WebUI.Controllers
             }
 
             return this.ErrorData("输入数据不合法");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("register")]
+        public async Task<IHttpActionResult> Register(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                IBLL.IUserManager userManager = new BLL.UserManager();
+                if (await userManager.GetUserByEmail(model.Email) == null)
+                {
+                    await userManager.Register(model.Email, model.LoginPwd);
+                    return this.SendData("注册成功");
+                }
+                return this.ErrorData("邮箱已注册");
+            }
+
+            return this.ErrorData("输入数据不合法");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("banner")]
+        public IHttpActionResult GetBanner()
+        {
+            var list = new List<BannerViewModel>() {
+                new BannerViewModel(){Url="http://www.weqan.cn",Image="//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png"},
+                new BannerViewModel(){Url="http://www.weqan.cn",Image="//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png"},
+                new BannerViewModel(){Url="http://www.weqan.cn",Image="//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide03.png"}
+            };
+
+            //设置序列化时key为驼峰样式  
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            settings.Formatting = Formatting.Indented;
+
+            return Json(list, settings);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("rollinglist")]
+        public IHttpActionResult GetRollinglist()
+        {
+            var list1 = new List<RollingListViewModel>() {
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"}
+            };
+
+            var list2 = new List<RollingListViewModel>() {
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"}
+            };
+
+            List<List<RollingListViewModel>> list = new List<List<RollingListViewModel>>();
+            list.Add(list1);
+            list.Add(list2);
+
+            //设置序列化时key为驼峰样式  
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            settings.Formatting = Formatting.Indented;
+
+            return Json(list, settings);
+        }
+
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("category")]
+        public async Task<IHttpActionResult> GetCategory()
+        {
+            IBLL.ICommodityManager commodityManager = new BLL.CommodityManager();
+            var catelist = await commodityManager.GetAllCategories();
+            List<CategoryViewModel> list = new List<CategoryViewModel>();
+
+            foreach (var cate in catelist)
+            {
+                list.Add(new CategoryViewModel() { Active = false, Label = cate.CategoryName, CateId = cate.CategoryId });
+            }
+
+            //设置序列化时key为驼峰样式  
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            settings.Formatting = Formatting.Indented;
+
+            return Json(list, settings);
+        }
+
+        [HttpGet()]
+        [AllowAnonymous]
+        [Route("classify")]
+        public async Task<IHttpActionResult> GetClassify(string cateId)
+        {
+            IBLL.ICommodityManager commodityManager = new BLL.CommodityManager();
+            var comlist = await commodityManager.GetAllCommoditiesByCateId(cateId);
+            List<CommodityViewModel> list = new List<CommodityViewModel>();
+            foreach (var com in comlist)
+            {
+                list.Add(new CommodityViewModel() { ComId = com.Id, Image = "http://localhost:57949/" + com.MainImage, Label = com.Title.Substring(0,5) });
+            }
+
+            //设置序列化时key为驼峰样式  
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            settings.Formatting = Formatting.Indented;
+
+            return Json(list, settings);
+
         }
 
 

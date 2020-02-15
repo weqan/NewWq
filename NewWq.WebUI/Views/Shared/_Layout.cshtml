@@ -46,10 +46,10 @@
                     </div>
                     <div class="top-bar-2 col-md-5">
                         <i class="icon-tel"></i>
-                        <span>888-555-6666（服务时间：9:00-21:00）</span>
+                        <span>888-888-8888（服务时间：9:00-21:00）</span>
                     </div>
                     <div class="top-bar-3 col-md-2">
-                        <a href="#">校企合作</a>
+                        <a href="#">与我们合作</a>
                         <a href="/Admin/Home/Login">后台登录</a>
                     </div>
                     <div class="top-bar-4 col-md-3">
@@ -80,7 +80,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="/">
                         <img src="~/Content/img/logo.png" alt="weqan" style="width: 80px;">
                     </a>
                 </div>
@@ -88,25 +88,15 @@
                 <div class="collapse navbar-collapse" id="wq-target">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">关于我们 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">热门课程</a></li>
+                        <li><a href="#">热门商品</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                                role="button" aria-haspopup="true" aria-expanded="false">
-                                课程介绍 <span class="caret"></span>
+                                产品分类 <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">.NET系列</a></li>
-                                <li><a href="#">Java系列</a></li>
-                                <li><a href="#">前端系列</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">运行维护</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">数据库</a></li>
-                            </ul>
+                            @{Html.RenderAction("PartialViewCate");}
                         </li>
-                        <li><a href="#">名师授课</a></li>
-                        <li><a href="#">课堂互动</a></li>
-                        <li><a href="#">联系我们</a></li>
+                        <li><a href="/Home/List">产品列表</a></li>
                     </ul>
 
                     @if (loginName != "")

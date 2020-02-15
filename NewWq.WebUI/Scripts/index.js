@@ -46,8 +46,8 @@ $(function(){
     $(allList[1]).on("click", function () {
         $("html,body").animate({ scrollTop: $("#wq_hot").offset().top }, 1000);
     });
-    $(allList[3]).on("click", function () {
-        $("html,body").animate({ scrollTop: $("#wq_link").offset().top }, 1000);
+    $(allList[0]).on("click", function () {
+        $("html,body").animate({ scrollTop: $("#wq_about").offset().top }, 1000);
     });
 
 

@@ -82,6 +82,7 @@ namespace System.Web.Http
                 if ((DateTime)result["timeout"]<DateTime.Now)
                 {
                     throw new Exception("jwt已过期，请重新登录");
+                    
                 }
 
                 result.Remove("tomeout");

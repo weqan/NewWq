@@ -1,8 +1,6 @@
 ﻿using NewWq.Dto;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NewWq.IBLL
@@ -16,6 +14,8 @@ namespace NewWq.IBLL
         Task<List<Dto.CategoryDto>> GetAllCategories(Guid userId);
         Task<Dto.CategoryDto> GetCategoryById(Guid id);
         Task<List<CategoryDto>> GetAllCategories(int top);
+        List<CategoryDto> GetAllCategoriesSync();
+        Task<List<CategoryDto>> GetAllCategories();
         Task EditCategory(Guid categoryId, string newCategoryName);
         Task RemoveCategory(Guid categoryId);
 
@@ -23,6 +23,7 @@ namespace NewWq.IBLL
         Task<List<Dto.CommodityDto>> GetAllCommodities(Guid userId);
         Task<List<Dto.CommodityDto>> GetAllCommodities(Guid userId, int pageIndex = 1, int pageSize = 3, bool asc = true);
         Task<List<Dto.CommodityDto>> GetAllCommoditiesByCateId(Guid? cateId, int pageIndex = 1, int pageSize = 3, bool asc = true);
+        Task<List<Dto.CommodityDto>> GetAllCommoditiesByCateId(string cateId);
         Task<List<Dto.CommodityDto>> GetAllCommodities(int count);
 
         Task<int> GetDataCount(Guid userId);
