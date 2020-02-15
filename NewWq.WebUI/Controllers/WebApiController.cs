@@ -100,26 +100,28 @@ namespace NewWq.WebUI.Controllers
         [Route("rollinglist")]
         public IHttpActionResult GetRollinglist()
         {
+            string weburl = System.Configuration.ConfigurationManager.AppSettings["webUrl"];
+
             var list1 = new List<RollingListViewModel>() {
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_h5.png",Label="HTML5"}
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_h5.png",Label="HTML5"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_h5.png",Label="HTML5"},
             };
 
             var list2 = new List<RollingListViewModel>() {
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"},
-                new RollingListViewModel(){Url="http://www.weqan.cn",Image="http://localhost:57949/CateImg/about_java.png",Label="Java"}
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_java.png",Label="Java"},
+                new RollingListViewModel(){Url="http://www.weqan.cn",Image=weburl+"CateImg/about_java.png",Label="Java"},
             };
 
             List<List<RollingListViewModel>> list = new List<List<RollingListViewModel>>();
@@ -166,9 +168,10 @@ namespace NewWq.WebUI.Controllers
             IBLL.ICommodityManager commodityManager = new BLL.CommodityManager();
             var comlist = await commodityManager.GetAllCommoditiesByCateId(cateId);
             List<CommodityViewModel> list = new List<CommodityViewModel>();
+            string weburl = System.Configuration.ConfigurationManager.AppSettings["webUrl"];
             foreach (var com in comlist)
             {
-                list.Add(new CommodityViewModel() { ComId = com.Id, Image = "http://localhost:57949/" + com.MainImage, Label = com.Title.Substring(0,5) });
+                list.Add(new CommodityViewModel() { ComId = com.Id, Image = weburl + com.MainImage, Label = com.Title.Substring(0, 5) });
             }
 
             //设置序列化时key为驼峰样式  
