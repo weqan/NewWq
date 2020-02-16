@@ -17,6 +17,11 @@ namespace NewWq.WebUI
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            //注册捆绑压缩js与css
+            //是否开启合并
+            BundleTable.EnableOptimizations = false;
+
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }

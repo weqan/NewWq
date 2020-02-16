@@ -10,6 +10,12 @@ namespace NewWq.WebUI.Controllers
 {
     public class UserController : Controller
     {
+        //public ActionResult PartialViewCate()
+        //{
+        //    IBLL.ICommodityManager commodityManager = new BLL.CommodityManager();
+        //    var catelist = commodityManager.GetAllCategoriesSync();
+        //    return PartialView(catelist);
+        //}
         [HttpGet]
         public ActionResult Register()
         {

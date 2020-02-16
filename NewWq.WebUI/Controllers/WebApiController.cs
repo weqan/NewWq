@@ -184,6 +184,38 @@ namespace NewWq.WebUI.Controllers
         }
 
 
+        [HttpGet()]
+        [AllowAnonymous]
+        [Route("comlist")]
+        public async Task<IHttpActionResult> GetComList(int pageIndex = 1, int pageSize = 10)
+        {
+            IBLL.ICommodityManager commodityManager = new BLL.CommodityManager();
+            int conCount = await commodityManager.GetComCount(null);
 
+            int pageCount = conCount % pageSize == 0 ? conCount / pageSize : conCount / pageSize + 1;
+
+            if (pageIndex > pageCount)
+            {
+                return this.ErrorData("没有更多内容了");
+            }
+
+            List<Dto.CommodityDto> comList = await commodityManager.GetAllCommoditiesByCateId(null, pageIndex, pageSize, true);
+            List<CommodityViewModel> list = new List<CommodityViewModel>();
+            string weburl = System.Configuration.ConfigurationManager.AppSettings["webUrl"];
+
+            foreach (var com in comList)
+            {
+                list.Add(new CommodityViewModel() { ComId = com.Id, Image = weburl + com.MainImage, Label = com.Title.Substring(0, 5) });
+            }
+
+
+
+            //设置序列化时key为驼峰样式  
+            //JsonSerializerSettings settings = new JsonSerializerSettings();
+            //settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //settings.Formatting = Formatting.Indented;
+            //Json(list, settings)
+            return this.SendData(list);
+        }
     }
 }

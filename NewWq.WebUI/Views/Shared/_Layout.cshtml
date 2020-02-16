@@ -23,6 +23,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
+    <meta keyword="维千网"/>
+    <meta content="网站模板 响应式网站"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 维千学院</title>
     @Styles.Render("~/Content/css")
@@ -94,7 +96,7 @@
                                role="button" aria-haspopup="true" aria-expanded="false">
                                 产品分类 <span class="caret"></span>
                             </a>
-                            @{Html.RenderAction("PartialViewCate");}
+                            @{Html.RenderAction("PartialViewCate", "Home");}
                         </li>
                         <li><a href="/Home/List">产品列表</a></li>
                     </ul>

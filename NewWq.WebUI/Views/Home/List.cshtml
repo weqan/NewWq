@@ -14,16 +14,19 @@
     <script>
         window.onload = function () {
             var item = window.location.search.substr(1);
+            if (item.indexOf('CategoryId') != -1) { 
+                
+                item ='&'+ item.substr(item.indexOf('CategoryId'))
 
-            var alist = this.document.querySelectorAll(".pagination li a");
+                var alist = this.document.querySelectorAll(".pagination li a");
 
-            for (var i = 0; i < alist.length; i++) {
-                var href = alist[i].getAttribute("href") + "&" + item;
-
-                alist[i].setAttribute("href", href);
+                for (var i = 0; i < alist.length; i++) {
+                    var href = alist[i].getAttribute("href")+item;
+                    alist[i].setAttribute("href", href);
+                }
+                
             }
-
-
+            
         }
 
     </script>
@@ -37,20 +40,20 @@
 <div class="container">
     <div class="row">
         <div class="hidden-xs">
-            <div class="col-sm-4 col-md-2"></div>
-            <div class="col-sm-4 col-md-2 list_menu" style="background: #fe9625">
+            <div class="hidden-sm col-md-2"></div>
+            <div class="col-sm-3 col-md-2 list_menu" style="background: #fe9625">
                 <a href="/Home/List?CategoryId=@modelList[0].CategoryId">@modelList[0].CategoryName</a>
             </div>
-            <div class="col-sm-4 col-md-2 list_menu" style="background: #f6da3d">
+            <div class="col-sm-3 col-md-2 list_menu" style="background: #f6da3d">
                 <a href="/Home/List?CategoryId=@modelList[1].CategoryId">@modelList[1].CategoryName</a>
             </div>
-            <div class="col-sm-4 col-md-2 list_menu" style="background: #89c516">
+            <div class="col-sm-3 col-md-2 list_menu" style="background: #89c516">
                 <a href="/Home/List?CategoryId=@modelList[2].CategoryId">@modelList[2].CategoryName</a>
             </div>
-            <div class="col-sm-4 col-md-2 list_menu" style="background: #318fd8">
+            <div class="col-sm-3 col-md-2 list_menu" style="background: #318fd8">
                 <a href="/Home/List?CategoryId=@modelList[3].CategoryId">@modelList[3].CategoryName</a>
             </div>
-            <div class="col-sm-4 col-md-2"></div>
+            <div class="hidden-sm col-md-2"></div>
         </div>
     </div>
 </div>
@@ -73,7 +76,7 @@
                         <a href="/Home/Detail?comid=@commodityDto.Id" class="thumbnail">
                             <img src="/@commodityDto.MainImage" alt="@commodityDto.Title">
                             <div class="caption">
-                                <h4>@commodityDto.Title</h4>
+                                <h4>@commodityDto.Title.Substring(0,26)</h4>
                             </div>
                         </a>
                     </div>

@@ -365,6 +365,7 @@
     <Content Include="Areas\Admin\Views\Commodity\CategoryEdit.cshtml" />
     <Content Include="Areas\Admin\Views\Home\AdminList.cshtml" />
     <Content Include="Areas\Admin\Views\Home\UserEdit.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
