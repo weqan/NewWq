@@ -13,7 +13,7 @@ namespace NewWq.Models.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202002110617343_newwq"; }
+            get { return "202002191207320_newwq"; }
         }
         
         string IMigrationMetadata.Source

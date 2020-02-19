@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Newtonsoft.Json
+@using NewWq.Dto
+@{
     var loginName = "";
     if (Session["loginName"] == null || Session["loginName"].ToString() == "")
     {
@@ -12,6 +14,11 @@
         }
 
     }
+    else if (Request.Cookies["userinfo"] != null && Request.Cookies["userinfo"].Value != "")
+    {
+        UserInformationDto user = JsonConvert.DeserializeObject<UserInformationDto>(Request.Cookies["userinfo"].Value);
+        loginName = user.SiteName;
+    }
     else
     {
         loginName = Session["loginName"] == null ? Request.Cookies["loginName"].Value : Session["loginName"].ToString();
@@ -23,8 +30,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <meta keyword="维千网"/>
-    <meta content="网站模板 响应式网站"/>
+    <meta keyword="维千网" />
+    <meta content="网站模板 响应式网站" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 维千学院</title>
     @Styles.Render("~/Content/css")

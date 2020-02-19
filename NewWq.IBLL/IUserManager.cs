@@ -14,6 +14,8 @@ namespace NewWq.IBLL
         Task ChangePassword(string email, string oldPwd, string newPwd);
         Task ChangeUserInformation(string email, string siteName, string imagePath);
         Task<UserInformationDto> GetUserByEmail(string email);
+
+        Task<UserInformationDto> GetUserByOpenId(string openid, Dictionary<string, string> userInfo);
         Task<List<UserInformationDto>> GetAllUsers();
         Task<UserInformationDto> GetOneUserById(Guid id);
         Task UserEdit(Guid userid, string email, string imagepath, string sitename, int type);

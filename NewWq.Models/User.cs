@@ -24,5 +24,6 @@ namespace NewWq.Models
         public int FocusCount { get; set; }
         public string SiteName { get; set; }
         public int Type { get; set; }
+        public string OpenId { get; set; }
     }
 }

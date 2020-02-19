@@ -57,9 +57,9 @@
     <Compile Include="Commodity.cs" />
     <Compile Include="ComtoCategory.cs" />
     <Compile Include="Fans.cs" />
-    <Compile Include="Migrations\202002110617343_newwq.cs" />
-    <Compile Include="Migrations\202002110617343_newwq.designer.cs">
-      <DependentUpon>202002110617343_newwq.cs</DependentUpon>
+    <Compile Include="Migrations\202002191207320_newwq.cs" />
+    <Compile Include="Migrations\202002191207320_newwq.designer.cs">
+      <DependentUpon>202002191207320_newwq.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="User.cs" />
@@ -71,8 +71,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002110617343_newwq.resx">
-      <DependentUpon>202002110617343_newwq.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002191207320_newwq.resx">
+      <DependentUpon>202002191207320_newwq.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

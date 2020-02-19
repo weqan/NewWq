@@ -92,6 +92,50 @@ namespace NewWq.BLL
             }
         }
 
+        public async Task<UserInformationDto> GetUserByOpenId(string openid, Dictionary<string, string> userInfo)
+        {
+            using (IDAL.IUserService userSvc = new DAL.UserService())
+            {
+                if (await userSvc.GetAll(m => m.OpenId == openid).AnyAsync())
+                {
+                    return await userSvc.GetAll().Where(m => m.OpenId == openid).Select(m => new UserInformationDto()
+                    {
+                        Id = m.Id,
+                        Email = m.Email,
+                        FansCount = m.FansCount,
+                        ImagePath = m.ImagePath,
+                        SiteName = m.SiteName,
+                        FocusCount = m.FocusCount,
+                        Type = m.Type
+                    }).FirstAsync();
+                }
+                else
+                {
+                    await userSvc.CreateAsync(new User()
+                    {
+                        Email = Guid.NewGuid().ToString() + "@qq.com",
+                        Password = "123456",
+                        SiteName = userInfo["nickname"],
+                        ImagePath = userInfo["figureurl_qq_1"],
+                        OpenId = openid
+                    });
+
+                    return await userSvc.GetAll().Where(m => m.OpenId == openid).Select(m => new UserInformationDto()
+                    {
+                        Id = m.Id,
+                        Email = m.Email,
+                        FansCount = m.FansCount,
+                        ImagePath = m.ImagePath,
+                        SiteName = m.SiteName,
+                        FocusCount = m.FocusCount,
+                        Type = m.Type
+                    }).FirstAsync();
+
+                }
+
+            }
+        }
+
 
         public async Task<List<UserInformationDto>> GetAllUsers()
         {
