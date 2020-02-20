@@ -113,7 +113,7 @@ namespace NewWq.BLL
                 {
                     await userSvc.CreateAsync(new User()
                     {
-                        Email = Guid.NewGuid().ToString() + "@qq.com",
+                        Email = "default@qq.com",
                         Password = "123456",
                         SiteName = userInfo["nickname"],
                         ImagePath = userInfo["figureurl_qq_1"],

@@ -4,25 +4,25 @@
     var loginName = "";
     if (Session["loginName"] == null || Session["loginName"].ToString() == "")
     {
-        if (Request.Cookies["loginName"] == null)
+        if (Request.Cookies["loginName"] != null && Request.Cookies["loginName"].Value != "")
         {
-            loginName = "";
+            loginName = Request.Cookies["loginName"].Value;
+        }
+        else if (Request.Cookies["userinfo"] != null && Request.Cookies["userinfo"].Value != "")
+        {
+            UserInformationDto user = JsonConvert.DeserializeObject<UserInformationDto>(Request.Cookies["userinfo"].Value);
+            loginName = user.SiteName;
         }
         else
         {
-            loginName = Session["loginName"] == null ? Request.Cookies["loginName"].Value : Session["loginName"].ToString();
+            loginName = "";
         }
-
-    }
-    else if (Request.Cookies["userinfo"] != null && Request.Cookies["userinfo"].Value != "")
-    {
-        UserInformationDto user = JsonConvert.DeserializeObject<UserInformationDto>(Request.Cookies["userinfo"].Value);
-        loginName = user.SiteName;
     }
     else
     {
-        loginName = Session["loginName"] == null ? Request.Cookies["loginName"].Value : Session["loginName"].ToString();
+        loginName = Session["loginName"].ToString();
     }
+
 }
 
 <!DOCTYPE html>
