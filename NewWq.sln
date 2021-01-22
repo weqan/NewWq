@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewWq.BLL", "NewWq.BLL\NewW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewWq.WebUI", "NewWq.WebUI\NewWq.WebUI.csproj", "{E60ADF42-1EF2-4F41-A637-9678B39A082F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewWq.Api", "NewWq.Api\NewWq.Api.csproj", "{5CC0A320-76EC-4E4F-9721-695ED0A79482}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{E60ADF42-1EF2-4F41-A637-9678B39A082F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E60ADF42-1EF2-4F41-A637-9678B39A082F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E60ADF42-1EF2-4F41-A637-9678B39A082F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CC0A320-76EC-4E4F-9721-695ED0A79482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CC0A320-76EC-4E4F-9721-695ED0A79482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CC0A320-76EC-4E4F-9721-695ED0A79482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CC0A320-76EC-4E4F-9721-695ED0A79482}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
